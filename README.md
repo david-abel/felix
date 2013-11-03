@@ -1,5 +1,7 @@
 Felix© is an Artificial Intelligence that learns to create music. It was developed in Spring of 2012 by Dave Abel and Elliot Mitchell.
 
+It currently requires MacOS, and a version of QuickTime that can play midi files.
+
 ---Table Of Contents---
 
 1. How to Run Felix

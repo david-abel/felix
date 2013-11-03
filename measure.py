@@ -9,10 +9,10 @@ class Measure(list):
         self = []
 
     def getVector(self):
-	return self.vector
+	    return self.vector
 
     def setVector(self,the_vector):
-	self.vector = the_vector
+	    self.vector = the_vector
 
     def addNote(self,note):
         self.append(note)
@@ -30,9 +30,9 @@ class Measure(list):
             time = note.getTime()
 	    volume = note.getVolume()
             measure.addNote(track,channel,pitch,time,duration,volume)
-	measure_num = str(measure_num)
-	os.system("touch .songs/" + song_name + "/measure" + measure_num + ".mid")
-        binfile = open(".songs/" + song_name + "/measure" + measure_num + ".mid", 'wb')
-        measure.writeFile(binfile)
-        binfile.close()
-	os.system("open .songs/" + song_name + "/measure" + measure_num + ".mid")
+    	measure_num = str(measure_num)
+    	os.system("touch .songs/" + song_name + "/measure" + measure_num + ".mid")
+            binfile = open(".songs/" + song_name + "/measure" + measure_num + ".mid", 'wb')
+            measure.writeFile(binfile)
+            binfile.close()
+    	os.system("open .songs/" + song_name + "/measure" + measure_num + ".mid")

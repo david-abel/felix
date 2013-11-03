@@ -96,6 +96,7 @@ class Vector():
 			return self.one_vs_chord
 		elif index == 5:
 			return self.variety_duration
+
 	def __setitem__(self,index,new_val):
 		if index == 0:
 			self.note_distance = new_val	

@@ -9,6 +9,7 @@ import random
 
 
 class Song():
+	# Class that controls 
 	def __init__(self,root,mode,song_name):
 		self.song_name = song_name
 		self.measures = []
@@ -69,6 +70,7 @@ class Song():
 		self.octaves = double_scale
 			
 	def addMeasure(self,vector,length=4):
+		# Takes in a vector and generates a measure based on the features of the vector
 		self.current_measure +=1	
 		if self.binaryProbability(vector.getRepetition()) == True:
 			if self.current_measure > 1:
