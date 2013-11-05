@@ -20,7 +20,6 @@ class Song():
 		self.buildOctaves()
 		os.system("mkdir .songs/" + self.song_name)
 		os.system("touch .songs/" +  self.song_name + "/" + self.song_name + ".mid")
-
 	
 	def playMeasure(self,song_name,measure_num=None):
 		if measure_num == None:
@@ -79,7 +78,7 @@ class Song():
 				new_vec = the_measure.getVector() # If we're repeating, we want the user's opinion to reflect on the randomly selected vector's properties, except for the repetition property. This should reflect upon the current vectors (called 'vector') repetition property. So we make a new vector that has the randomly selected vector's properties except for repetition, which is taken from the current vector that caused us to repeat
 				new_vec.setRepetition(vector.getRepetition())
 				the_measure.setVector(new_vec)
-				self.measures.append(the_measure) #add the first measure.	
+				self.measures.append(the_measure) # Add the first measure.	
 				return
 		measure = Measure()
 		measure.setVector(vector)
@@ -88,7 +87,7 @@ class Song():
 		while time_left > 0:
 			pitch_list = self.buildNoteRatioList(vector.getGoodNoteRatio())
 			if measure == []:
-				# First note in the measure, just choose an item from our possible pitches randomly.
+				# First note in the measure, just choose an item from our possible pitches randomly. <- Could be improved
 				pitch = random.choice(pitch_list)
 			else:
 				# otherwise, incorporate the variety distance weight.
@@ -100,6 +99,8 @@ class Song():
 				duration = random.choice([.25,.5,1,2,4]) # First note, choose a duration randomly
 			note = Note(4-time_left,1,pitch,duration,100)
 			measure.addNote(note)
+
+			# Check to see if adding a chord
 			if self.binaryProbability(vector.getOneVsChord()):
 				# We rolled a chord.
 				pitches_in_chord = self.chordList(pitch)

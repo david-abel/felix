@@ -19,18 +19,20 @@ class Measure(list):
 
     def playMeasure(self,song_name,measure_num=0,tempo=120):
         measure = MIDIFile(1)
-        track = 0
-        time = 0
-        channel = 0
+        track, time, channel = 0, 0, 0
         measure.addTrackName(track,time,"Measure")
         measure.addTempo(track,time, tempo)
+
+        # Add notes to measure.
         for note in self:
-	    pitch = note.pitch
+            pitch = note.pitch
             duration = note.getDuration()
             time = note.getTime()
-	    volume = note.getVolume()
+            volume = note.getVolume()
             measure.addNote(track,channel,pitch,time,duration,volume)
     	measure_num = str(measure_num)
+
+        # Write the song to a file.
     	os.system("touch .songs/" + song_name + "/measure" + measure_num + ".mid")
         binfile = open(".songs/" + song_name + "/measure" + measure_num + ".mid", 'wb')
         measure.writeFile(binfile)

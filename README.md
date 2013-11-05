@@ -1,6 +1,6 @@
 Felix© is an Artificial Intelligence that learns to create music. It was developed in Spring of 2012 by Dave Abel and Elliot Mitchell.
 
-It currently requires MacOS, and a version of QuickTime that can play midi files.
+It currently requires MacOS X, and a version of QuickTime that can play midi files (QT 7).
 
 ---Table Of Contents---
 
@@ -9,9 +9,9 @@ It currently requires MacOS, and a version of QuickTime that can play midi files
 2. How Does Felix work?
 
 
----How To Run Felix---
+---(1) How To Run Felix---
 
-You must have python installed, and you must have a built in media player for .mid files (Quicktime will do just fine). Additionally, you must call felix.py from BASH, as there are hardcoded bash commands to manipulate files. To run Felix©, simply run felix.py by enterring the command "python felix.py" in Terminal.
+You must have python installed, and you must have a built in media player for .mid files (Quicktime 7 will do just fine - any newer versions are *not* equipped to playe MIDI files - I am currently working on a web version which will hopefully Winter 2014).
 
 Options:
 
@@ -20,7 +20,7 @@ Options:
 	Training - Here you can contribute to the project! Felix will generate some measures for you, and you can provide feedback (either positive or negative) on those measures. Ultimately, these measures will be pasted into a song, and you will determine whether or not you like the song Felix has created for you. Felix will adjust its music making algorithm slightly based on your opinions.
 
 
----How Does Felix Work?---
+---(2) How Does Felix Work?---
 
 Felix is based on a variant of a Self-Organizing Map, where each Vector in the map consists of weights from 0.0 - 1.0. Each weight (so each dimension of all vectors), represents a property of music that Felix uses to generate each measure. The properties we created were 'note_distance', 'repetition', 'chance to change octave', the ratio of 1's, 4's and 5's (of the scale) to 2's, 3's, 6's, and 7's, the chance to be a single note vs a chord, and the variety of the duration of notes per measure.
 

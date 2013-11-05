@@ -47,6 +47,7 @@ def queryUser():
 	print
 	mode = raw_input("Choose a mode for your song: ")
 		
+	# Make sure they entered a valid response
 	while mode.isdigit() != True or int(mode) < 0 or int(mode) > 7:
 		print "Invalid Selection."
 		mode = raw_input("Choose a scale (Please select a number from 1-7): ")
@@ -60,6 +61,8 @@ def listen():
 	queryUser()
 	master = Vector("master")
 	s = Song(root,mode,title)
+
+	# Build and play a song based on the master vector
 	for i in range(num_measures):
 		s.addMeasure(master)
 	s.playSong()
@@ -75,10 +78,12 @@ def train():
 	my_vector = Vector()
 	s = Song(root,mode,title)
 	for i in range(num_measures):
+		# Generate a vector and build a measure from it.
 		training_vector = Vector("user")
 		s.addMeasure(training_vector)
 		s.playMeasure(title,i)
 		
+		# Get feedback
 		user_opinion = raw_input("What did you think of that measure? (scale from 0-10): ")
 		while user_opinion.isdigit() == False or int(user_opinion) < 0 or int(user_opinion) > 10:
 			print "Invalid Response (please select a number from 0-10)"
@@ -86,9 +91,12 @@ def train():
 		user_opinion = int(user_opinion)
 		training_vector = s.measures[i].getVector() # update in the case that we repeated
 		my_vector.update(training_vector,.2,user_opinion)
+
+	# Get opinion on whole song
 	print "Here is your song!\n"
 	s.playSong()	
 	song_opinion = int(raw_input("How much did you like that song? (scale from 0-10): "))
+
 	while song_opinion < 0 or song_opinion > 10:
 		print "Please enter an integer between 0 and 10: "
 		song_opinion = raw_input("How much did you like that song? (scale from 0-10): ")
@@ -96,6 +104,8 @@ def train():
 			print "Invalid Response (please select a number from 0-10)"
 			song_opinion = raw_input("How much did you like that song? (scale from 0-10): ")
 		song_opinion = int(song_opinion)
+
+	# Update master based on user opinion
 	master = Vector("master")
 	master.update(my_vector,.05,song_opinion)
 	master.normalize()
