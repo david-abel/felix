@@ -65,9 +65,9 @@ def listen():
 	# Build and play a song based on the master vector
 	for i in range(num_measures):
 		s.addMeasure(master)
-	s.playSong()
 	print
 	print "This is the best song I know how to play!\n"	
+	s.playSong()
 	raw_input("Press any key to return to the main menu: ")	
 
 def train():

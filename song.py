@@ -6,6 +6,7 @@ from measure import Measure
 from note import Note
 import os
 import random
+import felixNamespace
 
 
 class Song():
@@ -39,7 +40,7 @@ class Song():
 		song_file = open(".songs/" + self.song_name + "/" + self.song_name + ".mid","wb")
 		the_song.writeFile(song_file)
 		song_file.close()
-		os.system("open .songs/" + self.song_name + "/" + self.song_name + ".mid")
+		os.system("fluidsynth -i " + felixNamespace.fluidsynthPath + " .songs/" + self.song_name + "/" + self.song_name + ".mid > .dump")
 
 	def buildMode(self):
 		# 60 is middle C

@@ -3,6 +3,7 @@
 from MidiFile import MIDIFile
 from note import Note
 import os
+import felixNamespace
 
 class Measure(list):
     def __init__(self):
@@ -37,4 +38,4 @@ class Measure(list):
         binfile = open(".songs/" + song_name + "/measure" + measure_num + ".mid", 'wb')
         measure.writeFile(binfile)
         binfile.close()
-    	os.system("open .songs/" + song_name + "/measure" + measure_num + ".mid")
+        os.system("fluidsynth -i " + felixNamespace.fluidsynthPath + " .songs/" + song_name + "/measure" + measure_num + ".mid")
