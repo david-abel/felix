@@ -38,4 +38,4 @@ class Measure(list):
         binfile = open(".songs/" + song_name + "/measure" + measure_num + ".mid", 'wb')
         measure.writeFile(binfile)
         binfile.close()
-        os.system("fluidsynth -i " + felixNamespace.fluidsynthPath + " .songs/" + song_name + "/measure" + measure_num + ".mid")
+        os.system("fluidsynth -i " + felixNamespace.fluidsynthPath + " .songs/" + song_name + "/measure" + measure_num + ".mid > .dump")
